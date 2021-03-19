@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         }
 
         req.session.userId = user.id;
-        res.status(204).send();
+        res.status(204).send({userId:user.id});
     }).catch(() => {
         res.status(500).send({ error: "Internal Server Error" });
     });
