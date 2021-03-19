@@ -38,7 +38,7 @@ db.connect({
 
     //Return index.html for routes not handled by build folder
     app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, 'build', 'index.html'));
     });
 
     //Start listening on port
