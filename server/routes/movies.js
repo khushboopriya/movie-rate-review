@@ -14,8 +14,9 @@ router.get('/all', (req, res) => {
     });
 });
 
-router.post('/ratingandreview/add', auth.authenticate, (req, res) => {
-    const {userId, movieId, review, rating} = req.body;
+router.post('/ratingandreview/add', auth.authenticate,(req, res) => {
+    const {movieId, review, rating} = req.body;
+    const userId = req.session.userId
     const ratingandreview = new RatingsAndReviews({userId, movieId, review, rating});
     
     RatingsAndReviews.updateOne({ userId, movieId }, {review, rating})
