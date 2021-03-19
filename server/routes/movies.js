@@ -20,7 +20,6 @@ router.post('/ratingandreview/add', auth.authenticate, (req, res) => {
     
     RatingsAndReviews.updateOne({ userId, movieId }, {review, rating})
     .then((opData) => {
-        console.log('opData=', opData);
         if(opData.nModified !== 0)   res.status(201).send({ success: true, userId, movieId, rating, review});
         else {
             ratingandreview.save()
