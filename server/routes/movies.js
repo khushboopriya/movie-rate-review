@@ -14,7 +14,7 @@ router.get('/all', (req, res) => {
     });
 });
 
-router.post('/ratingandreview/add', (req, res) => {
+router.post('/ratingandreview/add', auth.authenticate, (req, res) => {
     const {userId, movieId, review, rating} = req.body;
     const ratingandreview = new RatingsAndReviews({userId, movieId, review, rating});
     
@@ -36,7 +36,7 @@ router.post('/ratingandreview/add', (req, res) => {
     });
 });
 
-router.get('/ratingsandreviews/movieId', (req, res) => {
+router.get('/ratingandreview/movieId', (req, res) => {
     const {movieId} = req.body;
     RatingsAndReviews.find({movieId})
     .then(data => {
